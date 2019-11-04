@@ -9,14 +9,26 @@ class Clock extends StatefulWidget {
   _ClockState createState() => _ClockState();
 }
 
-class _ClockState extends State<Clock> {
+class _ClockState extends State<Clock> with SingleTickerProviderStateMixin {
   Map<String, String> _timeStrings;
+  AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
     _timeStrings = _formatDateTime(DateTime.now());
     Timer.periodic(Duration(seconds: 1), (Timer t) => _getTime());
+    _controller = AnimationController(
+      duration: Duration(seconds: 1),
+      vsync: this,
+    );
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _controller.dispose();
   }
 
   void _getTime() => setState(() => _timeStrings = _formatDateTime(DateTime.now()));
@@ -29,54 +41,66 @@ class _ClockState extends State<Clock> {
   };
 
   @override
-  Widget build(BuildContext context) =>Container(
-    margin: EdgeInsets.all(100),
-    width: 400,
-    height: 200,
-    child: Column(
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
+  Widget build(BuildContext context) => AlignTransition(
+    alignment: Tween<AlignmentGeometry>(
+      begin: Alignment.bottomRight,
+      end: Alignment.topRight,
+    ).animate(_controller),
+    child: FadeTransition(
+      opacity: Tween<double>(
+        begin: 0,
+        end: 1,
+      ).animate(_controller),
+      child: Container(
+        margin: EdgeInsets.all(100),
+        width: 400,
+        height: 200,
+        child: Column(
           children: [
-            Text(
-              _timeStrings['time'],
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 80,
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  _timeStrings['time'],
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 80,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  _timeStrings['second'],
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
-            Text(
-              _timeStrings['second'],
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 50,
-                fontWeight: FontWeight.bold,
-              ),
+            Row(
+              children: [
+                Text(
+                  _timeStrings['date'],
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 50,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  _timeStrings['day'],
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
             ),
           ],
         ),
-        Row(
-          children: [
-            Text(
-              _timeStrings['date'],
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 50,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            Text(
-              _timeStrings['day'],
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 30,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ],
-        ),
-      ],
+      ),
     ),
   );
 }
