@@ -23,38 +23,39 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final _clock = Clock();
+  final _menu  = Menu();
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      body: SafeArea(
-        child: Container(
-          child: Stack(
-            children: <Widget>[
-              Container(
-                alignment: Alignment.topRight,
-                child: _clock,
-              ),
-              Container(
-                alignment: Alignment.center,
-                child: Menu(),
-              ),
-            ],
-          ),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.centerLeft,
-              end: Alignment.centerRight,
-              stops: <double>[
-                0, 0.3, 0.7,
-              ],
-              colors: <Color>[
-                Colors.grey[800],
-                Colors.grey[850],
-                Colors.grey[900],
-              ]
+    body: SafeArea(
+      child: Container(
+        child: Stack(
+          children: <Widget>[
+            Container(
+              alignment: Alignment.topRight,
+              child: _clock,
             ),
+            Container(
+              alignment: Alignment.center,
+              child: _menu,
+            ),
+          ],
+        ),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+            stops: <double>[
+              0, 0.3, 0.7,
+            ],
+            colors: <Color>[
+              Colors.grey[800],
+              Colors.grey[850],
+              Colors.grey[900],
+            ]
           ),
         ),
       ),
-    );
+    ),
+  );
 }

@@ -12,7 +12,7 @@ class Clock extends StatefulWidget {
 class _ClockState extends State<Clock> with SingleTickerProviderStateMixin {
   Map<String, String> _timeStrings;
   AnimationController _controller;
-
+  
   @override
   void initState() {
     super.initState();
