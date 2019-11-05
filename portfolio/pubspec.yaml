@@ -1,19 +1,30 @@
 name: portfolio
-description: A new Flutter project.
+description: Portfolio
 version: 1.0.0+1
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
+  flutter_web: any
   intl: any
-  cupertino_icons: ^0.1.2
-  flutter_circular_chart: any
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  build_runner: any
+  build_web_compilers: any
 flutter:
   uses-material-design: true
+
+dependency_overrides:
+  flutter_web:
+    git:
+      url: https://github.com/flutter/flutter_web
+      path: packages/flutter_web
+  flutter_web_ui:
+    git:
+      url: https://github.com/flutter/flutter_web
+      path: packages/flutter_web_ui
+  flutter_web_test:
+    git:
+      url: https://github.com/flutter/flutter_web
+      path: packages/flutter_web_test
