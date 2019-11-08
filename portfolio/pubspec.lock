@@ -43,13 +43,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.23"
-  boolean_selector:
-    dependency: transitive
-    description:
-      name: boolean_selector
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.5"
   build:
     dependency: transitive
     description:
@@ -155,13 +148,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.1"
-  coverage:
-    dependency: transitive
-    description:
-      name: coverage
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.13.3+1"
   crypto:
     dependency: transitive
     description:
@@ -190,32 +176,10 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.10.11"
-  flutter_web:
+  flutter:
     dependency: "direct main"
-    description:
-      path: "packages/flutter_web"
-      ref: HEAD
-      resolved-ref: c04fb502b842859de07e36954a9390465a5426c0
-      url: "https://github.com/flutter/flutter_web"
-    source: git
-    version: "0.0.0"
-  flutter_web_test:
-    dependency: "direct overridden"
-    description:
-      path: "packages/flutter_web_test"
-      ref: HEAD
-      resolved-ref: c04fb502b842859de07e36954a9390465a5426c0
-      url: "https://github.com/flutter/flutter_web"
-    source: git
-    version: "0.0.0"
-  flutter_web_ui:
-    dependency: "direct overridden"
-    description:
-      path: "packages/flutter_web_ui"
-      ref: HEAD
-      resolved-ref: c04fb502b842859de07e36954a9390465a5426c0
-      url: "https://github.com/flutter/flutter_web"
-    source: git
+    description: flutter
+    source: sdk
     version: "0.0.0"
   front_end:
     dependency: transitive
@@ -329,13 +293,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.9.6+3"
-  multi_server_socket:
-    dependency: transitive
-    description:
-      name: multi_server_socket
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.2"
   node_interop:
     dependency: transitive
     description:
@@ -350,13 +307,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.1+2"
-  node_preamble:
-    dependency: transitive
-    description:
-      name: node_preamble
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.4.8"
   package_config:
     dependency: transitive
     description:
@@ -434,20 +384,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.7.5"
-  shelf_packages_handler:
-    dependency: transitive
-    description:
-      name: shelf_packages_handler
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.4"
-  shelf_static:
-    dependency: transitive
-    description:
-      name: shelf_static
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.8"
   shelf_web_socket:
     dependency: transitive
     description:
@@ -455,13 +391,11 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.2.3"
-  source_map_stack_trace:
+  sky_engine:
     dependency: transitive
-    description:
-      name: source_map_stack_trace
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.1.5"
+    description: flutter
+    source: sdk
+    version: "0.0.99"
   source_maps:
     dependency: transitive
     description:
@@ -511,27 +445,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.1.0"
-  test:
-    dependency: transitive
-    description:
-      name: test
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.9.3"
-  test_api:
-    dependency: transitive
-    description:
-      name: test_api
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.10"
-  test_core:
-    dependency: transitive
-    description:
-      name: test_core
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.2.14"
   timing:
     dependency: transitive
     description:
@@ -553,13 +466,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.8"
-  vm_service:
-    dependency: transitive
-    description:
-      name: vm_service
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "2.1.1"
   watcher:
     dependency: transitive
     description:

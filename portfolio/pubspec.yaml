@@ -6,7 +6,8 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  flutter_web: any
+  flutter:
+    sdk: flutter
   intl: any
 
 dev_dependencies:
@@ -14,17 +15,3 @@ dev_dependencies:
   build_web_compilers: any
 flutter:
   uses-material-design: true
-
-dependency_overrides:
-  flutter_web:
-    git:
-      url: https://github.com/flutter/flutter_web
-      path: packages/flutter_web
-  flutter_web_ui:
-    git:
-      url: https://github.com/flutter/flutter_web
-      path: packages/flutter_web_ui
-  flutter_web_test:
-    git:
-      url: https://github.com/flutter/flutter_web
-      path: packages/flutter_web_test

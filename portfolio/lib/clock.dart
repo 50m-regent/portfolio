@@ -2,57 +2,61 @@ import 'dart:async';
 
 import 'package:intl/intl.dart';
 
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
+
+import 'package:portfolio/constants.dart';
 
 class Clock extends StatefulWidget {
+  final _ClockState state = _ClockState();
+
   @override
-  _ClockState createState() => _ClockState();
+  _ClockState createState() => this.state;
 }
 
 class _ClockState extends State<Clock> with SingleTickerProviderStateMixin {
   Map<String, String> _timeStrings;
-  AnimationController _controller;
+  AnimationController controller;
   
   @override
   void initState() {
     super.initState();
-    _timeStrings = _formatDateTime(DateTime.now());
+    this._timeStrings = _formatDateTime(DateTime.now());
     Timer.periodic(Duration(seconds: 1), (Timer t) => _getTime());
-    _controller = AnimationController(
+    this.controller = AnimationController(
       duration: Duration(seconds: 1),
       vsync: this,
     );
-    _controller.forward();
+    this.controller.forward();
   }
 
   @override
   void dispose() {
     super.dispose();
-    _controller.dispose();
+    this.controller.dispose();
   }
 
-  void _getTime() => setState(() => _timeStrings = _formatDateTime(DateTime.now()));
+  void _getTime() => setState(() => this._timeStrings = _formatDateTime(DateTime.now()));
 
   Map<String, String> _formatDateTime(DateTime dateTime) => {
     'date':   DateFormat('LLLL. d').format(dateTime),
     'day':    DateFormat(' (E)').format(dateTime),
     'time':   DateFormat('H:mm').format(dateTime),
-    'second': DateFormat('.ss').format(dateTime),
+    'second': DateFormat('.ss').format(dateTime.add(Duration(seconds: 1))),
   };
 
   @override
   Widget build(BuildContext context) => AlignTransition(
     alignment: Tween<AlignmentGeometry>(
-      begin: Alignment.bottomRight,
+      begin: Alignment.centerRight,
       end: Alignment.topRight,
-    ).animate(_controller),
+    ).animate(this.controller),
     child: FadeTransition(
       opacity: Tween<double>(
         begin: 0,
         end: 1,
-      ).animate(_controller),
+      ).animate(this.controller),
       child: Container(
-        margin: EdgeInsets.all(100),
+        margin: EdgeInsets.all(windowSize.width / 20),
         width: 400,
         height: 200,
         child: Column(
@@ -61,7 +65,7 @@ class _ClockState extends State<Clock> with SingleTickerProviderStateMixin {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  _timeStrings['time'],
+                  this._timeStrings['time'],
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 80,
@@ -69,7 +73,7 @@ class _ClockState extends State<Clock> with SingleTickerProviderStateMixin {
                   ),
                 ),
                 Text(
-                  _timeStrings['second'],
+                  this._timeStrings['second'],
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 50,
@@ -81,7 +85,7 @@ class _ClockState extends State<Clock> with SingleTickerProviderStateMixin {
             Row(
               children: [
                 Text(
-                  _timeStrings['date'],
+                  this._timeStrings['date'],
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 50,
@@ -89,7 +93,7 @@ class _ClockState extends State<Clock> with SingleTickerProviderStateMixin {
                   ),
                 ),
                 Text(
-                  _timeStrings['day'],
+                  this._timeStrings['day'],
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 30,
